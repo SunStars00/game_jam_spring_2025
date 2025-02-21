@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://douiq5lbag6si"]
+
+[ext_resource type="Texture2D" uid="uid://bubmwgvn20sfj" path="res://Images/Backgrounds/MenuBackground.png" id="1_b6p6q"]
+[ext_resource type="Script" path="res://PlayButton.gd" id="1_qkbcd"]
+[ext_resource type="Script" path="res://exit_button.gd" id="2_dnsui"]
+[ext_resource type="Script" path="res://sound_button.gd" id="4_0hyib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x54qa"]
+bg_color = Color(0.695002, 0.514271, 0.809499, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MenuBackground" type="Sprite2D" parent="."]
+position = Vector2(-3, 3)
+texture = ExtResource("1_b6p6q")
+
+[node name="PlayGameButton" type="Button" parent="."]
+offset_left = -141.0
+offset_right = 142.0
+offset_bottom = 32.0
+text = "Play"
+script = ExtResource("1_qkbcd")
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = -140.0
+offset_top = 89.0
+offset_right = 142.0
+offset_bottom = 122.0
+text = "Exit"
+script = ExtResource("2_dnsui")
+
+[node name="SoundButton" type="Button" parent="."]
+offset_left = -141.0
+offset_top = 42.0
+offset_right = 144.0
+offset_bottom = 78.0
+text = "Settings"
+script = ExtResource("4_0hyib")
+
+[node name="SoundPanel" type="Panel" parent="SoundButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = -110.0
+offset_right = 291.0
+offset_bottom = 94.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x54qa")
+
+[node name="AllVolume" type="HSlider" parent="SoundButton/SoundPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 37.0
+offset_top = 41.0
+offset_right = 256.0
+offset_bottom = 57.0
+
+[node name="MusicVolume" type="HSlider" parent="SoundButton/SoundPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 103.0
+offset_right = 257.0
+offset_bottom = 153.0
+
+[node name="SoundEffectVolume" type="HSlider" parent="SoundButton/SoundPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 36.0
+offset_top = 77.0
+offset_right = 257.0
+offset_bottom = 93.0
+
+[node name="SoundExit" type="Button" parent="SoundButton/SoundPanel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 161.0
+offset_right = 233.0
+offset_bottom = 195.0
+text = "Exit"
+
+[connection signal="pressed" from="PlayGameButton" to="PlayGameButton" method="_on_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="SoundButton" to="SoundButton" method="_on_pressed"]
+[connection signal="value_changed" from="SoundButton/SoundPanel/AllVolume" to="SoundButton" method="_on_all_volume_value_changed"]
+[connection signal="changed" from="SoundButton/SoundPanel/SoundEffectVolume" to="SoundButton" method="_on_sound_effect_volume_changed"]
+[connection signal="pressed" from="SoundButton/SoundPanel/SoundExit" to="SoundButton" method="_on_sound_exit_pressed"]
