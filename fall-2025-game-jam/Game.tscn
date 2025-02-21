@@ -1,0 +1,184 @@
+[gd_scene load_steps=25 format=3 uid="uid://byt0y67qmumvh"]
+
+[ext_resource type="Texture2D" uid="uid://fv2m5np1nrr4" path="res://Images/Backgrounds/CockpitBackground.png" id="1_1gfau"]
+[ext_resource type="Texture2D" uid="uid://bhq5qxw2llkek" path="res://Images/Book/BookBody.png" id="1_jybuk"]
+[ext_resource type="Script" path="res://book_body.gd" id="2_0j33r"]
+[ext_resource type="Texture2D" uid="uid://omhq7fs1724f" path="res://Images/Interactables/Computer.png" id="2_0v4cw"]
+[ext_resource type="Script" path="res://fromCockToRec.gd" id="3_oikfw"]
+[ext_resource type="Texture2D" uid="uid://bs5tn4v8me4w7" path="res://Images/Book/Page1.png" id="3_v2mis"]
+[ext_resource type="Texture2D" uid="uid://y1jvqtyifp2l" path="res://Images/Book/Page0.png" id="3_vs7mr"]
+[ext_resource type="Script" path="res://buttonPrevious.gd" id="3_wipy0"]
+[ext_resource type="Texture2D" uid="uid://c2pkvysqbkc6a" path="res://Images/Book/Page2.png" id="4_0nhb1"]
+[ext_resource type="Script" path="res://buttonNext.gd" id="4_3vb45"]
+[ext_resource type="Texture2D" uid="uid://b4pd34irs7ksd" path="res://Images/Backgrounds/RecRoomBackground.png" id="4_3yn5x"]
+[ext_resource type="Script" path="res://page.gd" id="4_vj2cv"]
+[ext_resource type="Script" path="res://fromRecToCock.gd" id="5_frge7"]
+[ext_resource type="Script" path="res://fromRecToGas.gd" id="5_nbdob"]
+[ext_resource type="Texture2D" uid="uid://5towem5dw0ui" path="res://Images/Interactables/wires.png" id="6_4pqqw"]
+[ext_resource type="Script" path="res://fromRecToKit.gd" id="6_su4q7"]
+[ext_resource type="Texture2D" uid="uid://c5l712lsydokx" path="res://Images/Backgrounds/KitBackground.png" id="7_r20up"]
+[ext_resource type="Script" path="res://fromKitToRec.gd" id="8_j35sx"]
+[ext_resource type="Texture2D" uid="uid://b0le5e5mclfer" path="res://Images/Interactables/coffee.png" id="9_d7gpk"]
+[ext_resource type="Texture2D" uid="uid://cgddxrptc7iy7" path="res://Images/Backgrounds/gasRoomBackground.png" id="9_ftjnu"]
+[ext_resource type="Script" path="res://bookToggle.gd" id="9_yyo4t"]
+[ext_resource type="Texture2D" uid="uid://b8kf8y03s8yn" path="res://Images/Interactables/crank.png" id="10_ob1uh"]
+[ext_resource type="Script" path="res://fromGasToRec.gd" id="11_1d2eb"]
+[ext_resource type="Script" path="res://timer_handler.gd" id="24_ye14k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CockpitBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("1_1gfau")
+
+[node name="Computer" type="Sprite2D" parent="CockpitBackground"]
+position = Vector2(168, 0)
+texture = ExtResource("2_0v4cw")
+
+[node name="toRec" type="Button" parent="CockpitBackground"]
+offset_left = 300.0
+offset_top = -15.0
+offset_right = 378.0
+offset_bottom = 16.0
+text = "recRoom"
+script = ExtResource("3_oikfw")
+
+[node name="RecRoomBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+texture = ExtResource("4_3yn5x")
+
+[node name="toGas" type="Button" parent="RecRoomBackground"]
+offset_left = 325.0
+offset_top = -15.0
+offset_right = 366.0
+offset_bottom = 16.0
+text = "Fule"
+script = ExtResource("5_nbdob")
+
+[node name="toCock" type="Button" parent="RecRoomBackground"]
+offset_left = -362.0
+offset_top = -15.0
+offset_right = -296.0
+offset_bottom = 16.0
+text = "CockPit"
+script = ExtResource("5_frge7")
+
+[node name="toKit" type="Button" parent="RecRoomBackground"]
+offset_left = -33.0
+offset_top = 243.0
+offset_right = 34.0
+offset_bottom = 274.0
+text = "Kitchen"
+script = ExtResource("6_su4q7")
+
+[node name="Wires" type="Sprite2D" parent="RecRoomBackground"]
+position = Vector2(148, 1)
+texture = ExtResource("6_4pqqw")
+
+[node name="GasRoomBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(5, -1)
+texture = ExtResource("9_ftjnu")
+
+[node name="Crank" type="Sprite2D" parent="GasRoomBackground"]
+position = Vector2(159, 1)
+texture = ExtResource("10_ob1uh")
+
+[node name="toRec" type="Button" parent="GasRoomBackground"]
+offset_left = -380.0
+offset_top = -13.0
+offset_right = -299.0
+offset_bottom = 18.0
+text = "RecRoom"
+script = ExtResource("11_1d2eb")
+
+[node name="KitBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1, 0)
+texture = ExtResource("7_r20up")
+
+[node name="toRec" type="Button" parent="KitBackground"]
+offset_left = -42.0
+offset_top = -253.0
+offset_right = 36.0
+offset_bottom = -222.0
+text = "recRoom"
+script = ExtResource("8_j35sx")
+
+[node name="Coffee" type="Sprite2D" parent="KitBackground"]
+position = Vector2(-180, 1)
+texture = ExtResource("9_d7gpk")
+
+[node name="BookBody" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(254, 128)
+scale = Vector2(0.571667, 0.571667)
+texture = ExtResource("1_jybuk")
+script = ExtResource("2_0j33r")
+
+[node name="Previous" type="Button" parent="BookBody"]
+offset_left = -437.318
+offset_top = 262.391
+offset_right = -419.318
+offset_bottom = 293.391
+text = "<"
+script = ExtResource("3_wipy0")
+
+[node name="Next" type="Button" parent="BookBody"]
+offset_left = 412.828
+offset_top = 265.889
+offset_right = 430.828
+offset_bottom = 296.889
+text = ">"
+script = ExtResource("4_3vb45")
+
+[node name="Page0" type="Sprite2D" parent="BookBody" groups=["bookPages"]]
+position = Vector2(1.74921, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("3_vs7mr")
+script = ExtResource("4_vj2cv")
+
+[node name="Page1" type="Sprite2D" parent="BookBody" groups=["bookPages"]]
+position = Vector2(-0.583023, 2.18659)
+scale = Vector2(0.989796, 0.989796)
+texture = ExtResource("3_v2mis")
+script = ExtResource("4_vj2cv")
+
+[node name="Page2" type="Sprite2D" parent="BookBody" groups=["bookPages"]]
+position = Vector2(2.33231, -0.874634)
+scale = Vector2(1, 1)
+texture = ExtResource("4_0nhb1")
+script = ExtResource("4_vj2cv")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 514.0
+offset_top = 280.0
+offset_right = 562.0
+offset_bottom = 311.0
+text = "Book"
+script = ExtResource("9_yyo4t")
+
+[node name="timerHandler" type="Node" parent="."]
+script = ExtResource("24_ye14k")
+
+[node name="PeopleDistractionTimer" type="Timer" parent="timerHandler"]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="pressed" from="CockpitBackground/toRec" to="CockpitBackground/toRec" method="_on_pressed"]
+[connection signal="pressed" from="RecRoomBackground/toGas" to="RecRoomBackground/toGas" method="_on_pressed"]
+[connection signal="pressed" from="RecRoomBackground/toCock" to="RecRoomBackground/toCock" method="_on_pressed"]
+[connection signal="pressed" from="RecRoomBackground/toKit" to="RecRoomBackground/toKit" method="_on_pressed"]
+[connection signal="pressed" from="GasRoomBackground/toRec" to="GasRoomBackground/toRec" method="_on_pressed"]
+[connection signal="pressed" from="KitBackground/toRec" to="KitBackground/toRec" method="_on_pressed"]
+[connection signal="pressed" from="BookBody/Previous" to="BookBody/Previous" method="_on_pressed"]
+[connection signal="pressed" from="BookBody/Next" to="BookBody/Next" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="timeout" from="timerHandler/PeopleDistractionTimer" to="timerHandler" method="_on_people_distraction_timer_timeout"]
