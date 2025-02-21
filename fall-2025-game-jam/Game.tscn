@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byt0y67qmumvh"]
+[gd_scene load_steps=27 format=3 uid="uid://byt0y67qmumvh"]
 
 [ext_resource type="Texture2D" uid="uid://fv2m5np1nrr4" path="res://Images/Backgrounds/CockpitBackground.png" id="1_1gfau"]
 [ext_resource type="Texture2D" uid="uid://bhq5qxw2llkek" path="res://Images/Book/BookBody.png" id="1_jybuk"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://b8kf8y03s8yn" path="res://Images/Interactables/crank.png" id="10_ob1uh"]
 [ext_resource type="Script" path="res://fromGasToRec.gd" id="11_1d2eb"]
 [ext_resource type="Script" path="res://timer_handler.gd" id="24_ye14k"]
+[ext_resource type="Texture2D" uid="uid://dxud37twri8mr" path="res://Images/People/TempPerson.png" id="25_b6s8j"]
+[ext_resource type="Script" path="res://person.gd" id="26_7ench"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -48,6 +50,7 @@ script = ExtResource("3_oikfw")
 
 [node name="RecRoomBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(1, 0)
 texture = ExtResource("4_3yn5x")
 
@@ -81,7 +84,6 @@ texture = ExtResource("6_4pqqw")
 
 [node name="GasRoomBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(5, -1)
 texture = ExtResource("9_ftjnu")
 
@@ -99,7 +101,6 @@ script = ExtResource("11_1d2eb")
 
 [node name="KitBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(1, 0)
 texture = ExtResource("7_r20up")
 
@@ -166,11 +167,21 @@ text = "Book"
 script = ExtResource("9_yyo4t")
 
 [node name="timerHandler" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("24_ye14k")
 
 [node name="PeopleDistractionTimer" type="Timer" parent="timerHandler"]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="NextBreakTimer" type="Timer" parent="timerHandler"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Person0" type="Sprite2D" parent="timerHandler" groups=["distractionPeople"]]
+position = Vector2(-365, 149)
+texture = ExtResource("25_b6s8j")
+script = ExtResource("26_7ench")
 
 [connection signal="pressed" from="CockpitBackground/toRec" to="CockpitBackground/toRec" method="_on_pressed"]
 [connection signal="pressed" from="RecRoomBackground/toGas" to="RecRoomBackground/toGas" method="_on_pressed"]
@@ -182,3 +193,4 @@ one_shot = true
 [connection signal="pressed" from="BookBody/Next" to="BookBody/Next" method="_on_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="timeout" from="timerHandler/PeopleDistractionTimer" to="timerHandler" method="_on_people_distraction_timer_timeout"]
+[connection signal="timeout" from="timerHandler/NextBreakTimer" to="timerHandler" method="_on_next_break_timer_timeout"]
