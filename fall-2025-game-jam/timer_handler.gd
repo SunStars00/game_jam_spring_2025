@@ -39,4 +39,16 @@ func _on_people_distraction_timer_timeout() -> void:
 	get_tree().call_group("distractionPeople", "changeVisByAsk", rng.randi_range(0,maxPeople))
 
 func _on_next_break_timer_timeout() -> void:
-	pass # Replace with function body.
+	var machineToBreakInt = rng.randi_range(0,2)
+	var machineStringName
+	if machineToBreakInt == 0: 
+		machineStringName = "Coffee"
+	if machineToBreakInt == 1:
+		machineStringName = "Wires"
+	if machineToBreakInt == 2:
+		machineStringName = "Computer"
+	else:
+		machineStringName = "null"
+	get_tree().call_group("machines", "breakByAsk", machineStringName)
+	%NextBreakTimer.wait_time = difficulty(time) + rng.randf_range(0,difficulty(time)/10)
+	%NextBreakTimer.start()

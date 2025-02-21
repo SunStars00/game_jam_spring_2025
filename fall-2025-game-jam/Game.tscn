@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byt0y67qmumvh"]
+[gd_scene load_steps=28 format=3 uid="uid://byt0y67qmumvh"]
 
 [ext_resource type="Texture2D" uid="uid://fv2m5np1nrr4" path="res://Images/Backgrounds/CockpitBackground.png" id="1_1gfau"]
 [ext_resource type="Texture2D" uid="uid://bhq5qxw2llkek" path="res://Images/Book/BookBody.png" id="1_jybuk"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://bookToggle.gd" id="9_yyo4t"]
 [ext_resource type="Texture2D" uid="uid://b8kf8y03s8yn" path="res://Images/Interactables/crank.png" id="10_ob1uh"]
 [ext_resource type="Script" path="res://fromGasToRec.gd" id="11_1d2eb"]
+[ext_resource type="Script" path="res://Coffee.gd" id="15_qcdsv"]
 [ext_resource type="Script" path="res://timer_handler.gd" id="24_ye14k"]
 [ext_resource type="Texture2D" uid="uid://dxud37twri8mr" path="res://Images/People/TempPerson.png" id="25_b6s8j"]
 [ext_resource type="Script" path="res://person.gd" id="26_7ench"]
@@ -36,7 +37,7 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("1_1gfau")
 
-[node name="Computer" type="Sprite2D" parent="CockpitBackground"]
+[node name="Computer" type="Sprite2D" parent="CockpitBackground" groups=["machines"]]
 position = Vector2(168, 0)
 texture = ExtResource("2_0v4cw")
 
@@ -78,7 +79,7 @@ offset_bottom = 274.0
 text = "Kitchen"
 script = ExtResource("6_su4q7")
 
-[node name="Wires" type="Sprite2D" parent="RecRoomBackground"]
+[node name="Wires" type="Sprite2D" parent="RecRoomBackground" groups=["machines"]]
 position = Vector2(148, 1)
 texture = ExtResource("6_4pqqw")
 
@@ -87,7 +88,7 @@ unique_name_in_owner = true
 position = Vector2(5, -1)
 texture = ExtResource("9_ftjnu")
 
-[node name="Crank" type="Sprite2D" parent="GasRoomBackground"]
+[node name="Crank" type="Sprite2D" parent="GasRoomBackground" groups=["machines"]]
 position = Vector2(159, 1)
 texture = ExtResource("10_ob1uh")
 
@@ -112,9 +113,10 @@ offset_bottom = -222.0
 text = "recRoom"
 script = ExtResource("8_j35sx")
 
-[node name="Coffee" type="Sprite2D" parent="KitBackground"]
+[node name="Coffee" type="Sprite2D" parent="KitBackground" groups=["machines"]]
 position = Vector2(-180, 1)
 texture = ExtResource("9_d7gpk")
+script = ExtResource("15_qcdsv")
 
 [node name="BookBody" type="Sprite2D" parent="."]
 unique_name_in_owner = true
